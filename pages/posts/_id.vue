@@ -12,7 +12,6 @@ import Vue from 'vue'
 import { getPostData } from '../../lib/posts'
 
 export default Vue.extend({
-  name: 'Post',
   async asyncData({params}) {
     const post = await getPostData(params.id)
     return {

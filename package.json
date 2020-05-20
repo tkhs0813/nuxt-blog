@@ -5,7 +5,7 @@
   "author": "tanakakjs",
   "private": true,
   "scripts": {
-    "dev": "nuxt-ts",
+    "dev": "PORT=3333 nuxt-ts",
     "build": "nuxt-ts build",
     "generate": "nuxt-ts generate",
     "start": "nuxt-ts start",
