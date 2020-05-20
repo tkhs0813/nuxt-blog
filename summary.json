@@ -1,0 +1,34 @@
+{
+  "fileMap": {
+    "output/test.json": {
+      "title": "Two Forms of Pre-rendering",
+      "tags": [
+        "sampleTag",
+        "sampleTag2"
+      ],
+      "date": "2020-01-01T00:00:00.000Z",
+      "dir": "output",
+      "base": "test.json",
+      "ext": ".json",
+      "sourceBase": "test.md",
+      "sourceExt": ".md"
+    },
+    "output/test2.json": {
+      "title": "test2",
+      "tags": [
+        "sampleTag",
+        "sampleTag3"
+      ],
+      "date": "2020-01-04T00:00:00.000Z",
+      "dir": "output",
+      "base": "test2.json",
+      "ext": ".json",
+      "sourceBase": "test2.md",
+      "sourceExt": ".md"
+    }
+  },
+  "sourceFileArray": [
+    "posts/test.md",
+    "posts/test2.md"
+  ]
+}
