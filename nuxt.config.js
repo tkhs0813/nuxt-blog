@@ -39,7 +39,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ['@nuxtjs/markdownit'],
   /*
    ** Build configuration
    */
@@ -48,5 +48,8 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  markdownit: {
+    injected: true
   }
 }
