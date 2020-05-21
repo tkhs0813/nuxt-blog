@@ -17,7 +17,7 @@ export function getFileNames(): string[] {
   return fileNames
 }
 
-function getPostsData() {
+function getAllPostsData() {
   const fileNames = getFileNames()
   return fileNames.map((fileName: string) => {
     // @ts-ignore
@@ -34,9 +34,9 @@ function getPostsData() {
 }
 
 export function getSortedPostsData() {
-  const postsData = getPostsData()
+  const allPostsData = getAllPostsData()
 
-  return postsData.sort((a, b) => {
+  return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1
     } else {
