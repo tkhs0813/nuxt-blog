@@ -2,8 +2,12 @@
   <div>
     <nuxt-link to="/post">post</nuxt-link>
     <h2>{{ post.title }}</h2>
-    <div>{{ post.tags }}</div>
     <div>{{ post.date }}</div>
+    <ul>
+      <li v-for="(tag, index) in post.tags" :key="index">
+        <nuxt-link :to="`/tag/${tag}`">{{ tag }}</nuxt-link>
+      </li>
+    </ul>
     <nuxt-content :document="post"></nuxt-content>
     <nuxt-link v-if="prev" :to="`/post/${prev.slug}`">
       prev: {{ prev.title }}
