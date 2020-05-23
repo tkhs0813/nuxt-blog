@@ -14,6 +14,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  // @ts-ignore
   async asyncData({ $content }) {
     const posts = await $content('post')
       .sortBy('date', 'desc')

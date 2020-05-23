@@ -22,6 +22,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  // @ts-ignore
   async asyncData({ $content, params, error }) {
     let post
     try {

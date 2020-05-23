@@ -14,13 +14,14 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  // @ts-ignore
   async asyncData({ $content }) {
     // 全postからタグを抜き出す
     const tmpTags = await $content('post')
       .only(['tags'])
       .fetch()
 
-    let tmp = []
+    let tmp: string[] = []
     for (let i = 0; i < tmpTags.length; i++) {
       tmp = [...tmp, ...tmpTags[i].tags]
     }
