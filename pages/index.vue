@@ -1,6 +1,7 @@
 <template>
   <div>
-    home
+    <h2>Home</h2>
+    <nuxt-link to="/post">post</nuxt-link>
   </div>
 </template>
 

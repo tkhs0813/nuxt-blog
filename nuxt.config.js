@@ -33,13 +33,11 @@ export default {
    */
   buildModules: [
     '@nuxt/typescript-build',
-    // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    '@nuxtjs/tailwindcss'
   ],
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/markdownit'],
+  modules: ['@nuxt/content'],
   /*
    ** Build configuration
    */
@@ -49,7 +47,14 @@ export default {
      */
     extend(config, ctx) {}
   },
-  markdownit: {
-    injected: true
+  generate: {
+    async routes() {
+      const { $content } = require('@nuxt/content')
+      const files = await $content()
+        .only(['path'])
+        .fetch()
+
+      return files.map((file) => (file.path === '/index' ? '/' : file.path))
+    }
   }
 }
