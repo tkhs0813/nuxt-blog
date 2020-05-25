@@ -1,0 +1,37 @@
+<template>
+  <nuxt-link :to="link" class="nuxtLink">
+    <a class="neumorphic-button">{{ name }}</a>
+  </nuxt-link>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  props: {
+    name: {
+      type: String,
+      default: 'neumorphic-button'
+    },
+    link: {
+      type: String,
+      default: ''
+    }
+  }
+})
+</script>
+
+<style>
+.nuxtLink:hover {
+  text-decoration: underline;
+}
+.neumorphic-button {
+  border-radius: 10px;
+  padding: 0.25rem;
+  background: #ebecf0;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001;
+}
+</style>

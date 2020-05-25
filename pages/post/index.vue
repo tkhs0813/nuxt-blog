@@ -2,11 +2,10 @@
   <div>
     <nuxt-link to="/">Home</nuxt-link>
     <h2>Blog</h2>
-    <ul>
-      <li v-for="post in posts" :key="post.slug">
-        <nuxt-link :to="`/post/${post.slug}`">{{ post.title }}</nuxt-link>
-      </li>
-    </ul>
+    <div v-for="post in posts" :key="post.slug">
+      {{ formatDate(post.date) }}:
+      <nuxt-link :to="`/post/${post.slug}`">{{ post.title }}</nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -21,6 +20,16 @@ export default Vue.extend({
       .fetch()
 
     return { posts }
+  },
+  methods: {
+    formatDate(d: string) {
+      const date = new Date(d)
+      const year = date.getFullYear()
+      const month = date.getMonth() + 1
+      const day = date.getDate()
+
+      return `${year}-${month}-${day}`
+    }
   }
 })
 </script>

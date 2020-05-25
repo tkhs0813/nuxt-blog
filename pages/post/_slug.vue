@@ -2,19 +2,27 @@
   <div>
     <nuxt-link to="/post">post</nuxt-link>
     <h2>{{ post.title }}</h2>
-    <div>{{ post.date }}</div>
-    <ul>
-      <li v-for="(tag, index) in post.tags" :key="index">
-        <nuxt-link :to="`/tag/${tag}`">{{ tag }}</nuxt-link>
-      </li>
-    </ul>
+    <div>{{ formatDate(post.date) }}</div>
+    <div class="tag-list">
+      <div v-for="(tag, index) in post.tags" :key="index">
+        <div class="tag-item">
+          <nuxt-link :to="`/tag/${tag}`">{{ tag }}</nuxt-link> /
+        </div>
+      </div>
+    </div>
     <nuxt-content :document="post"></nuxt-content>
-    <nuxt-link v-if="prev" :to="`/post/${prev.slug}`">
-      prev: {{ prev.title }}
-    </nuxt-link>
-    <nuxt-link v-if="next" :to="`/post/${next.slug}`">
-      next: {{ next.title }}
-    </nuxt-link>
+    <div v-if="prev" class="prev-area">
+      prev:
+      <nuxt-link :to="`/post/${prev.slug}`">
+        {{ prev.title }}
+      </nuxt-link>
+    </div>
+    <div v-if="next" class="next-area">
+      next:
+      <nuxt-link :to="`/post/${next.slug}`">
+        {{ next.title }}
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -42,8 +50,25 @@ export default Vue.extend({
       prev,
       next
     }
+  },
+  methods: {
+    formatDate(d: string) {
+      const date = new Date(d)
+      const year = date.getFullYear()
+      const month = date.getMonth() + 1
+      const day = date.getDate()
+
+      return `${year}-${month}-${day}`
+    }
   }
 })
 </script>
 
-<style></style>
+<style scoped>
+.tag-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+</style>
