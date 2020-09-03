@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <nuxt-link to="/post">post</nuxt-link>
-    <h2>{{ post.title }}</h2>
-    <div>{{ formatDate(post.date) }}</div>
-    <div class="tag-list">
+  <article>
+    <h2 class="text-xl">{{ post.title }}</h2>
+    <time class="mt-1 text-sm text-gray-600">{{ formatDate(post.date) }}</time>
+    <div class="pb-6">
+      <fa :icon="faMapMarkerAlt" />
       <div v-for="(tag, index) in post.tags" :key="index">
-        <div class="tag-item">
+        <div>
           <nuxt-link :to="`/tag/${tag}`">{{ tag }}</nuxt-link> /
         </div>
       </div>
@@ -23,11 +23,12 @@
         {{ next.title }}
       </nuxt-link>
     </div>
-  </div>
+  </article>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 export default Vue.extend({
   // @ts-ignore
@@ -48,8 +49,13 @@ export default Vue.extend({
     return {
       post,
       prev,
-      next
+      next,
     }
+  },
+  computed: {
+    faMapMarkerAlt() {
+      return faMapMarkerAlt
+    },
   },
   methods: {
     formatDate(d: string) {
@@ -59,16 +65,7 @@ export default Vue.extend({
       const day = date.getDate()
 
       return `${year}-${month}-${day}`
-    }
-  }
+    },
+  },
 })
 </script>
-
-<style scoped>
-.tag-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-</style>

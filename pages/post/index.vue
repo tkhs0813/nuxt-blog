@@ -1,11 +1,13 @@
 <template>
   <div>
-    <nuxt-link to="/">Home</nuxt-link>
-    <h2>Blog</h2>
-    <div v-for="post in posts" :key="post.slug">
-      {{ formatDate(post.date) }}:
-      <nuxt-link :to="`/post/${post.slug}`">{{ post.title }}</nuxt-link>
-    </div>
+    <section v-for="post in posts" :key="post.slug">
+      <nuxt-link :to="`/post/${post.slug}`" class="block pb-6">
+        <h2 class="text-xl">{{ post.title }}</h2>
+        <time class="mt-1 text-sm text-gray-600">{{
+          formatDate(post.date)
+        }}</time>
+      </nuxt-link>
+    </section>
   </div>
 </template>
 
@@ -15,9 +17,7 @@ import Vue from 'vue'
 export default Vue.extend({
   // @ts-ignore
   async asyncData({ $content }) {
-    const posts = await $content('post')
-      .sortBy('date', 'desc')
-      .fetch()
+    const posts = await $content('post').sortBy('date', 'desc').fetch()
 
     return { posts }
   },
@@ -29,9 +29,7 @@ export default Vue.extend({
       const day = date.getDate()
 
       return `${year}-${month}-${day}`
-    }
-  }
+    },
+  },
 })
 </script>
-
-<style></style>
