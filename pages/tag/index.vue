@@ -1,12 +1,10 @@
 <template>
   <div>
-    <nuxt-link to="/">Home</nuxt-link>
-    <h2>Tag</h2>
-    <ul>
-      <li v-for="(tag, index) in tags" :key="index">
-        <nuxt-link :to="`/tag/${tag}`">{{ tag }}</nuxt-link>
-      </li>
-    </ul>
+    <div v-for="(tag, index) in tags" :key="index" class="mb-3">
+      <nuxt-link :to="`/tag/${tag}`" class="bg-orange-200 rounded-md p-1">{{
+        tag
+      }}</nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -17,9 +15,7 @@ export default Vue.extend({
   // @ts-ignore
   async asyncData({ $content }) {
     // 全postからタグを抜き出す
-    const tmpTags = await $content('post')
-      .only(['tags'])
-      .fetch()
+    const tmpTags = await $content('post').only(['tags']).fetch()
 
     let tmp: string[] = []
     for (let i = 0; i < tmpTags.length; i++) {
@@ -32,6 +28,6 @@ export default Vue.extend({
     tags.sort()
 
     return { tags }
-  }
+  },
 })
 </script>

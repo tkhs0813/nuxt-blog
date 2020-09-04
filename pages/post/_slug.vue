@@ -1,16 +1,16 @@
 <template>
   <article>
-    <h2 class="text-xl">{{ post.title }}</h2>
+    <h2 class="text-2xl">{{ post.title }}</h2>
     <time class="mt-1 text-sm text-gray-600">{{ formatDate(post.date) }}</time>
-    <div class="pb-6">
-      <fa :icon="faMapMarkerAlt" />
-      <div v-for="(tag, index) in post.tags" :key="index">
-        <div>
-          <nuxt-link :to="`/tag/${tag}`">{{ tag }}</nuxt-link> /
-        </div>
+    <div class="pb-6 block">
+      <fa :icon="faTags" />
+      <div v-for="(tag, index) in post.tags" :key="index" class="inline-block">
+        <nuxt-link :to="`/tag/${tag}`" class="bg-orange-200 rounded-md p-1">{{
+          tag
+        }}</nuxt-link>
       </div>
     </div>
-    <nuxt-content :document="post"></nuxt-content>
+    <nuxt-content :document="post" class="prose-sm lg:prose-xl"></nuxt-content>
     <div v-if="prev" class="prev-area">
       prev:
       <nuxt-link :to="`/post/${prev.slug}`">
@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTags } from '@fortawesome/free-solid-svg-icons'
 
 export default Vue.extend({
   // @ts-ignore
@@ -53,8 +53,8 @@ export default Vue.extend({
     }
   },
   computed: {
-    faMapMarkerAlt() {
-      return faMapMarkerAlt
+    faTags() {
+      return faTags
     },
   },
   methods: {

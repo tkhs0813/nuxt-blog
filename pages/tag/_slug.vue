@@ -28,8 +28,8 @@ export default Vue.extend({
 
     return {
       posts,
-      tag: params.slug
+      tag: params.slug,
     }
-  }
+  },
 })
 </script>
