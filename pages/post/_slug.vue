@@ -10,7 +10,7 @@
         }}</nuxt-link>
       </div>
     </div>
-    <nuxt-content :document="post" class="prose-sm lg:prose-xl"></nuxt-content>
+    <nuxt-content :document="post" class="prose-sm lg:prose"></nuxt-content>
     <div v-if="prev" class="prev-area">
       prev:
       <nuxt-link :to="`/post/${prev.slug}`">
